@@ -9,9 +9,11 @@ Quick start
 
 1. Add "metadata_orm" to your INSTALLED_APPS setting like this::
 
-    INSTALLED_APPS = [
-        ...
-        'metadata_orm',
-    ]
+```
+   INSTALLED_APPS = [
+       ...
+       'metadata_orm',
+   ]
+```
 
 2. Run ``python manage.py migrate`` to create the metadata models if you don't have a database ready

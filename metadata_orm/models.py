@@ -164,7 +164,7 @@ class Genome(models.Model):
     data_release = models.ForeignKey(DataRelease, models.DO_NOTHING)
     assembly = models.ForeignKey(Assembly, models.DO_NOTHING)
     organism = models.ForeignKey('Organism', models.DO_NOTHING)
-    genebuild = models.CharField(max_length=64)
+    genebuild = models.CharField(max_length=255)
     division = models.ForeignKey(Division, models.DO_NOTHING)
     has_pan_compara = models.PositiveIntegerField()
     has_variations = models.PositiveIntegerField()
@@ -172,6 +172,7 @@ class Genome(models.Model):
     has_genome_alignments = models.PositiveIntegerField()
     has_synteny = models.PositiveIntegerField()
     has_other_alignments = models.PositiveIntegerField()
+    has_microarray = models.PositiveIntegerField()
 
     class Meta:
         managed = False
@@ -285,7 +286,6 @@ class Group(models.Model):
 class Organism(models.Model):
     organism_id = models.AutoField(primary_key=True)
     taxonomy_id = models.PositiveIntegerField()
-    is_reference = models.PositiveIntegerField()
     species_taxonomy_id = models.PositiveIntegerField()
     name = models.CharField(unique=True, max_length=128)
     url_name = models.CharField(max_length=128)
@@ -296,7 +296,6 @@ class Organism(models.Model):
     description = models.TextField(blank=True, null=True)
     image = models.TextField(blank=True, null=True)
     reference = models.CharField(max_length=128, blank=True, null=True)
-    group_id = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
